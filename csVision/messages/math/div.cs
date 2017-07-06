@@ -1,30 +1,15 @@
 ﻿namespace csVision {
 
 	public class div : iMech {
+	    public iMech left { get; set; } = null;
 
-		protected iMech p_left = null;
-		public iMech left {
-			get { return p_left; }
-			set { p_left = value; }
-		}
+	    public iMech right { get; set; } = null;
 
-		protected iMech p_right = null;
-		public iMech right {
-			get { return p_right; }
-			set { p_right = value; }
-		}
+	    public iMech go => new num { val = asNum };
 
-		public iMech go {
-			get { return new num { val = asNum }; }
-		}
+	    public float asNum => 0 == right.go.asNum ? float.PositiveInfinity : left.go.asNum / right.go.asNum;
 
-		public float asNum {
-			get { return 0 == p_right.go.asNum ? float.PositiveInfinity : p_left.go.asNum / p_right.go.asNum; }
-		}
-
-		public string asStr {
-			get { return string.Format ("({0} / {1})", p_left.asStr, p_right.asStr); }
-		}
+	    public string asStr => $"({left.asStr} / {right.asStr})";
 	}
 
 }

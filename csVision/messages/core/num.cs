@@ -1,24 +1,31 @@
-﻿namespace csVision {
+﻿using System;
+
+namespace csVision {
 
 	public class num : iMech {
 
-		protected float p_val = 0.0f;
-		public float val {
-			get { return p_val; }
-			set { p_val = value; }
-		}
+        public float val { get; set; }
 
-		public iMech go {
-			get { return this; }
-		}
+	    public iMech go => this;
 
-		public float asNum {
-			get { return p_val; }
-		}
+	    public float asNum => val;
 
-		public string asStr {
-			get { return p_val.ToString(); }
-		}
+	    public string asStr => val.ToString();
+
+	    public static implicit operator string(num n)
+	    {
+	        return n.asStr;
+	    }
+
+	    public static implicit operator float(num n)
+	    {
+	        return n.asNum;
+	    }
+
+	    public static implicit operator num(float n)
+	    {
+	        return new num() {val = n};
+	    }
 	}
 
 }

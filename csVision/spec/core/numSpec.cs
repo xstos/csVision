@@ -2,8 +2,10 @@
 using System;
 
 namespace csVision {
-	[TestFixture ()] public class numSpec {
-		[Test ()] public void num () {
+	[TestFixture ()]
+    public class numSpec {
+		[Test ()]
+        public void num () {
 			iMech msg = new num { val = 6 } ;
 
 			Assert.AreEqual(6, (msg as num).val);

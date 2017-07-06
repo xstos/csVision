@@ -1,30 +1,15 @@
 ﻿namespace csVision {
 
 	public class sub : iMech {
+	    public iMech left { get; set; } = null;
 
-		protected iMech p_left = null;
-		public iMech left {
-			get { return p_left; }
-			set { p_left = value; }
-		}
+	    public iMech right { get; set; } = null;
 
-		protected iMech p_right = null;
-		public iMech right {
-			get { return p_right; }
-			set { p_right = value; }
-		}
+	    public iMech go => (num)asNum;
 
-		public iMech go {
-			get { return new num { val = asNum }; }
-		}
+	    public float asNum => left.asNum - right.asNum;
 
-		public float asNum {
-			get { return left.asNum - right.asNum; }
-		}
-
-		public string asStr {
-			get { return string.Format ("({0} - {1})", p_left.asStr, p_right.asStr); }
-		}
+	    public string asStr => $"({left.asStr} - {right.asStr})";
 	}
 
 }
